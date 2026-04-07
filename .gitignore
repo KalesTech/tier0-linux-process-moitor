@@ -12,3 +12,31 @@
 
 pkg/
 src/
+
+# =========================
+# Tier0 runtime output
+# =========================
+OS_Monitor/
+tier0/
+live_status/
+collection/
+
+# Generated monitoring artifacts
+*.log
+alerts.txt
+process_summary.json
+top_cpu.txt
+top_mem.txt
+all_processes.txt
+current_cmds.txt
+unknown_procs.txt
+new_since_last.txt
+file_hashes.txt
+last_process_run.txt
+
+# Local configuration
+known_processes.txt
+
+# Keep example config
+!known_processes.example.txt
+``
