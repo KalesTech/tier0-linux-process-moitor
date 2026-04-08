@@ -107,15 +107,6 @@ sort "$OUTDIR/current_cmds.txt" > "$LAST_RUN"
 ps --no-headers -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head -n 15 > "$OUTDIR/top_cpu.txt"
 ps --no-headers -eo pid,ppid,cmd,%mem --sort=-%mem | head -n 15 > "$OUTDIR/top_mem.txt"
 
-# 6) Summarize anomalies into a single "alert" file that the UI will read
-ALERTS="$OUTDIR/alerts.txt"
-: > "$ALERTS"
-if [ -s "$OUTDIR/unknown_procs.txt" ]; then
-  echo "unknown_processes: $(wc -l < "$OUTDIR/unknown_procs.txt")" >> "$ALERTS"
-fi
-if [ -s "$OUTDIR/new_since_last.txt" ]; then
-  echo "new_commands_since_last: $(wc -l < "$OUTDIR/new_since_last.txt")" >> "$ALERTS"
-fi
 
 #Section 6
 # write a JSON summary for the UI (live only or also in collect mode)
